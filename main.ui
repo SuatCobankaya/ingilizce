@@ -41,6 +41,9 @@
         <property name="text">
          <string>Dosya</string>
         </property>
+        <property name="default">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
@@ -53,6 +56,9 @@
         </property>
         <property name="text">
          <string>Istatislik</string>
+        </property>
+        <property name="default">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -67,6 +73,9 @@
         <property name="text">
          <string>Ara</string>
         </property>
+        <property name="default">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
@@ -79,6 +88,9 @@
         </property>
         <property name="text">
          <string>Yeni Kelime</string>
+        </property>
+        <property name="default">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -125,6 +137,9 @@
         <property name="text">
          <string/>
         </property>
+        <property name="tristate">
+         <bool>false</bool>
+        </property>
        </widget>
       </item>
       <item row="1" column="1">
@@ -156,6 +171,9 @@
         <property name="text">
          <string>Cumle Olusturma</string>
         </property>
+        <property name="default">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item row="1" column="0">
@@ -168,6 +186,9 @@
         </property>
         <property name="text">
          <string>Eslestirme</string>
+        </property>
+        <property name="default">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -182,6 +203,9 @@
         <property name="text">
          <string>Kelime Kartlari</string>
         </property>
+        <property name="default">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item row="0" column="2">
@@ -194,6 +218,9 @@
         </property>
         <property name="text">
          <string>Test</string>
+        </property>
+        <property name="default">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -247,6 +274,9 @@
         </property>
         <property name="text">
          <string>Kaydet</string>
+        </property>
+        <property name="default">
+         <bool>true</bool>
         </property>
        </widget>
       </item>

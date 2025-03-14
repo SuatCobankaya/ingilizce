@@ -23,7 +23,11 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset theme="QIcon::ThemeIcon::GoPrevious"/>
+         <iconset>
+          <normaloff>geri.png</normaloff>geri.png</iconset>
+        </property>
+        <property name="default">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -33,7 +37,11 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset theme="QIcon::ThemeIcon::GoHome"/>
+         <iconset>
+          <normaloff>main.png</normaloff>main.png</iconset>
+        </property>
+        <property name="default">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -91,6 +99,9 @@
         <property name="text">
          <string>B.)</string>
         </property>
+        <property name="default">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item row="0" column="0">
@@ -108,6 +119,9 @@
         </property>
         <property name="text">
          <string>A.)</string>
+        </property>
+        <property name="default">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -127,6 +141,9 @@
         <property name="text">
          <string>C.)</string>
         </property>
+        <property name="default">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item row="1" column="1">
@@ -144,6 +161,9 @@
         </property>
         <property name="text">
          <string>D.)</string>
+        </property>
+        <property name="default">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -184,6 +204,9 @@
         <property name="text">
          <string>Onceki</string>
         </property>
+        <property name="default">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
@@ -197,6 +220,9 @@
        <widget class="QPushButton" name="pushButton_sonraki">
         <property name="text">
          <string>Sonraki</string>
+        </property>
+        <property name="default">
+         <bool>true</bool>
         </property>
        </widget>
       </item>

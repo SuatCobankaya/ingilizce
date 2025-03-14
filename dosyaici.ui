@@ -29,7 +29,11 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset theme="QIcon::ThemeIcon::GoPrevious"/>
+         <iconset>
+          <normaloff>geri.png</normaloff>geri.png</iconset>
+        </property>
+        <property name="default">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -39,7 +43,11 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset theme="QIcon::ThemeIcon::GoHome"/>
+         <iconset>
+          <normaloff>main.png</normaloff>main.png</iconset>
+        </property>
+        <property name="default">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -209,6 +217,9 @@
         <property name="text">
          <string>Yeni kelime</string>
         </property>
+        <property name="default">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>
@@ -221,6 +232,9 @@
         </property>
         <property name="text">
          <string>Kaydet</string>
+        </property>
+        <property name="default">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
