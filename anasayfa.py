@@ -23,10 +23,6 @@ class anapencere(QMainWindow):
         self.ana_pencere.pushButton_kaydet.clicked.connect(self.kaydet)
         self.ana_pencere.pushButton_test.clicked.connect(self.test)
         self.ana_pencere.pushButton_yenikelime.clicked.connect(self.yenikelime)
-        self.ana_pencere.checkBox_kelime.clicked.connect(self.chek_kelime)
-        self.ana_pencere.checkBox_test.clicked.connect(self.chek_test)
-        self.ana_pencere.checkBox_eslestirme.clicked.connect(self.chek_eslestirme)
-        self.ana_pencere.checkBox_cumle.clicked.connect(self.chek_cumle)
         self.ana_pencere.actionDark.triggered.connect(self.darkmode)
         self.ana_pencere.actionWhite.triggered.connect(self.whitemode)
         self.setCentralWidget(self.ana_pencere.centralwidget)
@@ -63,14 +59,6 @@ class anapencere(QMainWindow):
         self.yenikelimeac = yenikelimepencere()
         self.yenikelimeac.show()
     def kaydet(self, ):
-        pass
-    def chek_kelime(self, ):
-        pass
-    def chek_test(self, ):
-        pass
-    def chek_eslestirme(self, ):
-        pass
-    def chek_cumle(self, ):
         pass
     def darkmode(self, ):
         dark_stylesheet = """
