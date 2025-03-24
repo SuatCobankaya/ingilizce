@@ -1,6 +1,10 @@
-# -*- coding: utf-8 -*-
-
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QStyledItemDelegate
+
+class AlignDelegate(QStyledItemDelegate):
+    def paint(self, painter, option, index):
+        option.displayAlignment = QtCore.Qt.AlignCenter  # Metni ortala
+        super().paint(painter, option, index)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -25,11 +29,6 @@ class Ui_MainWindow(object):
         icon.addPixmap(QtGui.QPixmap("geri.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_geri.setIcon(icon)
         self.pushButton_geri.setIconSize(QtCore.QSize(16, 16))
-        self.pushButton_geri.setCheckable(False)
-        self.pushButton_geri.setAutoRepeat(False)
-        self.pushButton_geri.setAutoExclusive(False)
-        self.pushButton_geri.setAutoDefault(False)
-        self.pushButton_geri.setDefault(True)
         self.pushButton_geri.setObjectName("pushButton_geri")
         self.horizontalLayout_2.addWidget(self.pushButton_geri)
 
@@ -38,9 +37,6 @@ class Ui_MainWindow(object):
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("main.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_anasayfa.setIcon(icon1)
-        self.pushButton_anasayfa.setAutoDefault(False)
-        self.pushButton_anasayfa.setDefault(True)
-        self.pushButton_anasayfa.setFlat(False)
         self.pushButton_anasayfa.setObjectName("pushButton_anasayfa")
         self.horizontalLayout_2.addWidget(self.pushButton_anasayfa)
 
@@ -51,7 +47,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setObjectName("horizontalLayout")
 
         self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit.setObjectName("lineEdit")
+        self.lineEdit.setObjectName("lineEdit_kelime")
         self.horizontalLayout.addWidget(self.lineEdit)
 
         self.pushButton_ara = QtWidgets.QPushButton(self.centralwidget)
@@ -59,7 +55,6 @@ class Ui_MainWindow(object):
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap("ara.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_ara.setIcon(icon2)
-        self.pushButton_ara.setDefault(True)
         self.pushButton_ara.setObjectName("pushButton_ara")
         self.horizontalLayout.addWidget(self.pushButton_ara)
 
@@ -67,10 +62,27 @@ class Ui_MainWindow(object):
 
         # ListView'i büyüt
         self.listView = QtWidgets.QListView(self.centralwidget)
-        self.listView.setObjectName("listView")
+        self.listView.setObjectName("listView_anlam")
+
+        # Yazı tipini ve satır boyutunu büyüt
+        font = QtGui.QFont()
+        font.setPointSize(45)  # Yazı boyutunu büyüt
+        self.listView.setFont(font)
+
+        # Stil ile satır yüksekliğini ve görünümü ayarla
+        self.listView.setStyleSheet("""
+            QListView {
+                font-size: 45pt;  /* Yazı boyutunu büyüt */
+            }
+            QListView::item {
+                padding: 10px;    /* Satır içi boşluk */
+                min-height: 50px; /* Minimum satır yüksekliği */
+            }
+        """)
         self.verticalLayout.addWidget(self.listView)
 
         MainWindow.setCentralWidget(self.centralwidget)
+
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 37))
         self.menubar.setObjectName("menubar")
@@ -93,6 +105,9 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        # ListView için metin hizalamasını sağlayan delegate ekle
+        self.listView.setItemDelegate(AlignDelegate())
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

@@ -1,36 +1,61 @@
 import sqlite3
+import os
+import random
+class database():
+    def baglantiac(self):
+            self.con = sqlite3.connect("veritabani.db")
+            self.cursor = self.con.cursor()
+    def dosyalarigetir(self):
+         self.baglantiac()
+         self.cursor.execute("SELECT FileName FROM Files")
+         dosyalar = self.cursor.fetchall()
+         self.baglantikapat()
+         return [row[0] for row in dosyalar]
+    def ara(self,kelime):
+         kelime = kelime.lower()
+         self.baglantiac()
+         self.cursor.execute("SELECT Meaning FROM WORDS WHERE EnglishWord = ?", (kelime,))
+         anlamlar = self.cursor.fetchall()
+         self.baglantikapat()
+         return [row[0] for row in anlamlar]
+    def kelimelerigetir(self,a):
+         self.baglantiac()
+         self.cursor.execute("SELECT EnglishWord, Meaning, ExampleSentences FROM WORDS WHERE FileId = ?", (a,))
+         kelimeler = self.cursor.fetchall()
+         self.baglantikapat()
+         return kelimeler
+    def random(self,dosyaid,sayi):
+         self.baglantiac()
+         self.cursor.execute("SELECT EnglishWord, Meaning FROM WORDS WHERE FileId = ?", (dosyaid,))
+         rastgele = self.cursor.fetchall()
+         self.baglantikapat()
+         if len(rastgele) < sayi:
+          return rastgele
+         else:
+          rastgele = random.sample(rastgele, sayi)
+          return rastgele
+    def dosyaekle(self,dosyaadi):
+         self.baglantiac()
+         self.cursor.execute("""INSERT INTO Files (FileName) VALUES (?);""", (dosyaadi,))
+         self.con.commit()
+         self.baglantikapat()
+    def dosyasil(self,dosyaismi):
+         self.baglantiac()
+         self.cursor.execute("""DELETE FROM Files WHERE FileName = ?;""", (dosyaismi,))
+         self.con.commit()
+         self.baglantikapat()
+    def dosyaidgetir(self,a):
+         self.baglantiac()
+         self.cursor.execute("SELECT FileId FROM Files WHERE FileName = ?", (a,))
+         id = self.cursor.fetchall()
+         self.baglantikapat()
+         return id
+    def kelimeekle(self,kelime,anlam,dosyaid,cumle=None):
+         self.baglantiac()
+         self.cursor.execute("""INSERT INTO WORDS (EnglishWord, Meaning, FileId, ExampleSentences) VALUES (?, ?, ?, ?);""", (kelime,anlam,dosyaid,cumle))
+         self.con.commit()
+         self.baglantikapat()
+    def baglantikapat(self):
+        self.con.close()
 
-class Database:
-    def __init__(self, db_path="veritabani.db"):
-        """Veritabanı bağlantısını başlatır."""
-        self.db_path = db_path
-        self.conn = None
-        self.cursor = None
 
-    def connect(self):
-        """Veritabanına bağlanır."""
-        self.conn = sqlite3.connect(self.db_path)
-        self.cursor = self.conn.cursor()
-        return self
-
-    def close(self):
-        """Veritabanı bağlantısını kapatır."""
-        if self.conn:
-            self.conn.close()
-            self.conn = None
-            self.cursor = None
-
-    def get_filesname(self):
-        """file tablosundan dosya adlarını çeker."""
-        self.cursor.execute("SELECT fileName FROM File") 
-        return [row[0] for row in self.cursor.fetchall()] 
-
-    def add_file(self, filename):
-        """Yeni bir dosya ekler."""
-        self.cursor.execute("INSERT INTO File (filename) VALUES (?)", (filename,))
-        self.conn.commit()
-
-    def delete_last_file(self):
-        """Son dosyayı siler."""
-        self.cursor.execute("DELETE FROM file WHERE id = (SELECT MAX(id) FROM file)")
-        self.conn.commit()
